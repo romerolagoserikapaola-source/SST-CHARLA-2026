@@ -20,24 +20,38 @@
 
         <div class="nav-container">
 
-            <a href="#" class="brand">
-                <div class="brand-icon">✓</div>
+            <a href="#inicio" class="brand">
+
+                <div class="brand-icon">
+                    ✓
+                </div>
 
                 <div class="brand-text">
                     <strong>SST TALKS IA</strong>
                     <span>Seguridad que conecta</span>
                 </div>
+
             </a>
 
 
             <nav class="nav-links">
-                <a href="#inicio">Inicio</a>
-                <a href="#como-funciona">Cómo funciona</a>
-                <a href="#beneficios">Beneficios</a>
 
-                <a href="#crear" class="nav-button">
+                <a href="#inicio">
+                    Inicio
+                </a>
+
+                <a href="#como-funciona">
+                    Cómo funciona
+                </a>
+
+                <a href="#beneficios">
+                    Beneficios
+                </a>
+
+                <a href="#generador" class="nav-button">
                     Crear charla
                 </a>
+
             </nav>
 
         </div>
@@ -45,12 +59,11 @@
     </header>
 
 
-
-    <!-- =========================
-         PORTADA PRINCIPAL
-    ========================== -->
-
     <main>
+
+        <!-- =========================
+             PORTADA
+        ========================== -->
 
         <section class="hero" id="inicio">
 
@@ -65,24 +78,37 @@
 
                     <h1>
                         Charlas de seguridad
-                        <span>que conectan con las personas.</span>
+                        <span>
+                            que conectan con las personas.
+                        </span>
                     </h1>
 
 
                     <p class="hero-description">
-                        Transforma un tema de Seguridad y Salud en el Trabajo
-                        en una charla de 5 minutos con historia, reflexión,
-                        preguntas y compromiso final.
+
+                        Transforma un tema de Seguridad y Salud
+                        en el Trabajo en una charla de 5 minutos
+                        con historia, reflexión, preguntas
+                        y compromiso final.
+
                     </p>
 
 
                     <div class="hero-actions">
 
-                        <a href="#crear" class="primary-button">
+                        <button
+                            type="button"
+                            class="primary-button"
+                            onclick="abrirGenerador()"
+                        >
                             ✦ Crear mi charla
-                        </a>
+                        </button>
 
-                        <a href="#como-funciona" class="secondary-button">
+
+                        <a
+                            href="#como-funciona"
+                            class="secondary-button"
+                        >
                             Ver cómo funciona
                         </a>
 
@@ -129,6 +155,24 @@
                     <div class="panel-content">
 
                         <span class="small-label">
+                            INDUSTRIA
+                        </span>
+
+                        <div class="fake-input">
+                            Energía
+                        </div>
+
+
+                        <span class="small-label">
+                            ÁREA
+                        </span>
+
+                        <div class="fake-input">
+                            Campo
+                        </div>
+
+
+                        <span class="small-label">
                             TEMA
                         </span>
 
@@ -142,26 +186,35 @@
                         </span>
 
                         <div class="fake-textarea">
-                            Instalación de malla en talud con exposición
-                            a desniveles y riesgo de caída.
+
+                            Instalación de malla en talud
+                            con exposición a desniveles
+                            y riesgo de caída.
+
                         </div>
 
 
-                        <button class="generate-preview">
+                        <button
+                            type="button"
+                            class="generate-preview"
+                            onclick="abrirGenerador()"
+                        >
                             ✦ Generar charla
                         </button>
 
 
                         <div class="result-preview">
 
-                            <span>Resultado</span>
+                            <span>
+                                Resultado
+                            </span>
 
                             <strong>
                                 Una historia breve que genera reflexión.
                             </strong>
 
                             <p>
-                                Historia + preguntas + mensaje final
+                                Historia + reflexión + preguntas + mensaje final
                             </p>
 
                         </div>
@@ -173,7 +226,6 @@
             </div>
 
         </section>
-
 
 
         <!-- =========================
@@ -206,7 +258,9 @@
                             01
                         </div>
 
-                        <h3>Historias cercanas</h3>
+                        <h3>
+                            Historias cercanas
+                        </h3>
 
                         <p>
                             Convierte situaciones reales de trabajo
@@ -222,11 +276,13 @@
                             02
                         </div>
 
-                        <h3>IA aplicada</h3>
+                        <h3>
+                            Contexto real
+                        </h3>
 
                         <p>
-                            Organiza el contenido según el tema,
-                            actividad y contexto de trabajo.
+                            Adapta la charla según la industria,
+                            área y actividad del día.
                         </p>
 
                     </article>
@@ -238,7 +294,9 @@
                             03
                         </div>
 
-                        <h3>Participación</h3>
+                        <h3>
+                            Participación
+                        </h3>
 
                         <p>
                             Incluye preguntas para generar reflexión
@@ -254,11 +312,13 @@
                             04
                         </div>
 
-                        <h3>Mensaje final</h3>
+                        <h3>
+                            Mensaje final
+                        </h3>
 
                         <p>
-                            Cada charla termina con un compromiso
-                            práctico para aplicar durante la jornada.
+                            Cada charla termina con un mensaje
+                            preventivo fácil de recordar.
                         </p>
 
                     </article>
@@ -268,7 +328,6 @@
             </div>
 
         </section>
-
 
 
         <!-- =========================
@@ -286,13 +345,13 @@
                     </span>
 
                     <h2>
-                        Tu charla en tres pasos.
+                        Tu charla en cuatro pasos.
                     </h2>
 
                 </div>
 
 
-                <div class="process-grid">
+                <div class="process-grid process-four">
 
                     <div class="process-item">
 
@@ -300,17 +359,16 @@
                             1
                         </div>
 
-                        <h3>Ingresa el tema</h3>
+                        <h3>
+                            Selecciona la industria
+                        </h3>
 
                         <p>
-                            Indica el riesgo, actividad
-                            o tema que quieres trabajar.
+                            Indica el sector donde
+                            se realizará el trabajo.
                         </p>
 
                     </div>
-
-
-                    <div class="process-line"></div>
 
 
                     <div class="process-item">
@@ -319,17 +377,15 @@
                             2
                         </div>
 
-                        <h3>Describe el contexto</h3>
+                        <h3>
+                            Selecciona el área
+                        </h3>
 
                         <p>
-                            Cuéntanos brevemente qué trabajo
-                            realizará tu equipo.
+                            Campo, oficina o planta.
                         </p>
 
                     </div>
-
-
-                    <div class="process-line"></div>
 
 
                     <div class="process-item">
@@ -338,10 +394,30 @@
                             3
                         </div>
 
-                        <h3>Genera tu charla</h3>
+                        <h3>
+                            Ingresa el tema
+                        </h3>
 
                         <p>
-                            Obtén una historia, reflexión,
+                            Escribe el riesgo,
+                            actividad o tema preventivo.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-item">
+
+                        <div class="process-circle">
+                            4
+                        </div>
+
+                        <h3>
+                            Genera tu charla
+                        </h3>
+
+                        <p>
+                            Obtén historia, reflexión,
                             preguntas y mensaje final.
                         </p>
 
@@ -354,12 +430,11 @@
         </section>
 
 
-
         <!-- =========================
-             LLAMADA A LA ACCIÓN
+             CTA
         ========================== -->
 
-        <section class="cta-section" id="crear">
+        <section class="cta-section">
 
             <div class="cta-card">
 
@@ -383,7 +458,11 @@
                 </div>
 
 
-                <button class="cta-button" onclick="iniciarCharla()">
+                <button
+                    type="button"
+                    class="cta-button"
+                    onclick="abrirGenerador()"
+                >
                     ✦ Comenzar ahora
                 </button>
 
@@ -391,8 +470,181 @@
 
         </section>
 
-    </main>
 
+        <!-- =========================
+             GENERADOR REAL
+        ========================== -->
+
+        <section
+            class="generador-section"
+            id="generador"
+        >
+
+            <div class="generador-container">
+
+                <div class="generador-header">
+
+                    <span class="section-tag">
+                        CREA TU CHARLA
+                    </span>
+
+                    <h2>
+                        Crea una charla SST
+                        con enfoque storytelling
+                    </h2>
+
+                    <p>
+                        Selecciona la industria y el área.
+                        Luego escribe el tema de la charla
+                        y el contexto de la actividad del día.
+                    </p>
+
+                </div>
+
+
+                <div class="generador-card">
+
+                    <!-- INDUSTRIA -->
+
+                    <div class="campo">
+
+                        <label for="industria">
+                            Industria
+                        </label>
+
+                        <select id="industria">
+
+                            <option value="">
+                                Selecciona una industria
+                            </option>
+
+                            <option value="Energía">
+                                Energía
+                            </option>
+
+                            <option value="Minería">
+                                Minería
+                            </option>
+
+                            <option value="Construcción">
+                                Construcción
+                            </option>
+
+                            <option value="Petróleo y Gas">
+                                Petróleo y Gas
+                            </option>
+
+                            <option value="Manufactura">
+                                Manufactura
+                            </option>
+
+                            <option value="Transporte">
+                                Transporte
+                            </option>
+
+                            <option value="Aviación">
+                                Aviación
+                            </option>
+
+                            <option value="Servicios">
+                                Servicios
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ÁREA -->
+
+                    <div class="campo">
+
+                        <label for="area">
+                            Área de trabajo
+                        </label>
+
+                        <select id="area">
+
+                            <option value="">
+                                Selecciona el área
+                            </option>
+
+                            <option value="Campo">
+                                Campo
+                            </option>
+
+                            <option value="Oficina">
+                                Oficina
+                            </option>
+
+                            <option value="Planta">
+                                Planta
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- TEMA -->
+
+                    <div class="campo">
+
+                        <label for="tema">
+                            Tema de la charla
+                        </label>
+
+                        <input
+                            type="text"
+                            id="tema"
+                            placeholder="Ejemplo: Trabajo en altura"
+                        >
+
+                    </div>
+
+
+                    <!-- CONTEXTO -->
+
+                    <div class="campo">
+
+                        <label for="contexto">
+                            Contexto del trabajo del día
+                        </label>
+
+                        <textarea
+                            id="contexto"
+                            placeholder="Ejemplo: El equipo realizará instalación de malla en un talud con acceso por cuerdas."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- BOTÓN GENERAR -->
+
+                    <button
+                        type="button"
+                        class="boton-generar"
+                        onclick="generarCharla()"
+                    >
+                        ✦ Generar mi charla
+                    </button>
+
+                </div>
+
+
+                <!-- RESULTADO -->
+
+                <div
+                    id="resultado"
+                    class="resultado"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 
 
     <!-- =========================
@@ -404,12 +656,16 @@
         <div class="footer-container">
 
             <div>
-                <strong>SST TALKS IA</strong>
+
+                <strong>
+                    SST TALKS IA
+                </strong>
 
                 <p>
                     Seguridad y Salud en el Trabajo
                     contada con historias que dejan huella.
                 </p>
+
             </div>
 
 
@@ -422,18 +678,205 @@
     </footer>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script>
 
-        function iniciarCharla() {
+        /* ==========================================
+           ABRIR GENERADOR
+        ========================================== */
 
-            alert(
-                "¡Vamos a crear tu charla SST tipo storytelling!"
-            );
+        function abrirGenerador() {
+
+            const generador =
+                document.getElementById("generador");
+
+            generador.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+        /* ==========================================
+           GENERAR CHARLA CON IA
+        ========================================== */
+
+        async function generarCharla() {
+
+            const industria =
+                document.getElementById("industria").value;
+
+            const area =
+                document.getElementById("area").value;
+
+            const tema =
+                document.getElementById("tema").value.trim();
+
+            const contexto =
+                document.getElementById("contexto").value.trim();
+
+            const resultado =
+                document.getElementById("resultado");
+
+
+            /* VALIDAR CAMPOS */
+
+            if (
+                industria === "" ||
+                area === "" ||
+                tema === "" ||
+                contexto === ""
+            ) {
+
+                resultado.innerHTML = `
+
+                    <div class="mensaje-error">
+
+                        ⚠️ Completa todos los campos
+                        para generar tu charla.
+
+                    </div>
+
+                `;
+
+                resultado.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+                return;
+
+            }
+
+
+            /* MENSAJE MIENTRAS ESPERA */
+
+            resultado.innerHTML = `
+
+                <div class="cargando">
+
+                    ✦ Generando tu charla
+                    con Inteligencia Artificial...
+
+                </div>
+
+            `;
+
+
+            try {
+
+                /* LLAMADA AL BACKEND DE VERCEL */
+
+                const respuesta = await fetch(
+                    "/api/generar-charla",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            industria: industria,
+
+                            area: area,
+
+                            tema: tema,
+
+                            contexto: contexto
+
+                        })
+                    }
+                );
+
+
+                const datos =
+                    await respuesta.json();
+
+
+                if (!respuesta.ok) {
+
+                    throw new Error(
+                        datos.error ||
+                        "Error al generar la charla"
+                    );
+
+                }
+
+
+                /* MOSTRAR RESPUESTA */
+
+                resultado.innerHTML = `
+
+                    <article class="charla-generada">
+
+                        <div class="resultado-cabecera">
+
+                            <span>
+                                SST TALKS IA · ${industria}
+                            </span>
+
+                            <h2>
+                                ${tema}
+                            </h2>
+
+                            <p>
+                                Área: ${area}
+                                · Storytelling SST
+                            </p>
+
+                        </div>
+
+
+                        <div class="respuesta-ia">
+
+                            ${datos.charla
+                                .replace(/\n/g, "<br>")}
+
+                        </div>
+
+                    </article>
+
+                `;
+
+
+                resultado.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                resultado.innerHTML = `
+
+                    <div class="mensaje-error">
+
+                        ⚠️ No pudimos generar la charla.
+
+                        <br><br>
+
+                        Verifica tu conexión
+                        e inténtalo nuevamente.
+
+                    </div>
+
+                `;
+
+            }
 
         }
 
     </script>
+
 
 </body>
 
