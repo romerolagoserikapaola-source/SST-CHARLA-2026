@@ -21,3 +21,6 @@ Utilizar la tecnología y la Inteligencia Artificial como apoyo para crear exper
 ---
 
 👷‍♀️ **Proyecto en desarrollo | 2026**
+## 🌐 Accede a la plataforma
+
+[🚀 ABRIR SST CHARLA 2026](ENLACE-DE-TU-PAGINA)
