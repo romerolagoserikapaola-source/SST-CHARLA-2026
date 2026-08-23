@@ -5,104 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mi Plataforma Digital</title>
+    <title>SST CHARLA 2026</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-        }
-
-        header {
-            background-color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        .contenedor {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .tarjeta {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        .boton {
-            display: inline-block;
-            background-color: #222222;
-            color: white;
-            padding: 14px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-        }
-
-        .boton:hover {
-            background-color: #444444;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #777;
-        }
-    </style>
-
+    <!-- Conexión con el archivo de diseño -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <h1>Mi Plataforma Digital</h1>
-    <p>Bienvenido</p>
-</header>
-
-<div class="contenedor">
-
-    <div class="tarjeta">
-
-        <h2>¡Hola! 👋</h2>
-
-        <p>
-            Esta es mi primera plataforma web creada con HTML
-            y publicada mediante GitHub.
-        </p>
-
-        <button class="boton" onclick="mostrarMensaje()">
-            Empezar
-        </button>
-
-    </div>
-
-</div>
-
-<footer>
-    Plataforma Digital 2026
-</footer>
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>SST CHARLA 2026</h1>
+        <p>Seguridad + Tecnología + Inteligencia Artificial</p>
+    </header>
 
 
-<script>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor">
 
-function mostrarMensaje() {
+        <div class="tarjeta">
 
-    alert("¡Tu plataforma funciona correctamente!");
+            <h2>¡Hola! 👋</h2>
 
-}
+            <p>
+                Bienvenido a mi plataforma digital.
+            </p>
 
-</script>
+            <p>
+                Este espacio ha sido creado para desarrollar herramientas
+                digitales aplicadas a la Seguridad y Salud en el Trabajo.
+            </p>
+
+            <button class="boton" onclick="mostrarMensaje()">
+                Empezar
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        SST CHARLA 2026 | Plataforma Digital
+    </footer>
+
+
+    <!-- FUNCIONES -->
+    <script>
+
+        function mostrarMensaje() {
+            alert("¡Bienvenido a SST CHARLA 2026!");
+        }
+
+    </script>
 
 </body>
 
