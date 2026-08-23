@@ -383,14 +383,58 @@
                 </div>
 
 
-                <button class="cta-button" onclick="iniciarCharla()">
+                <button class="cta-button" onclick="abrirGenerador()">
                     ✦ Comenzar ahora
                 </button>
 
             </div>
 
         </section>
+<!-- AQUÍ EMPIEZA EL GENERADOR -->
 
+<section class="generador" id="generador">
+
+    <div class="generador-contenido">
+
+        <span class="section-tag">CREA TU CHARLA</span>
+
+        <h2>Genera tu charla SST</h2>
+
+        <p class="generador-intro">
+            Ingresa el tema y describe brevemente el trabajo que realizará
+            tu equipo.
+        </p>
+
+        <div class="formulario">
+
+            <label for="tema">Tema de SST</label>
+
+            <input
+                type="text"
+                id="tema"
+                placeholder="Ejemplo: Trabajo en altura"
+            >
+
+            <label for="contexto">Contexto del trabajo</label>
+
+            <textarea
+                id="contexto"
+                placeholder="Ejemplo: Instalación de malla en un talud a 10 metros de altura."
+            ></textarea>
+
+            <button onclick="generarCharla()" class="boton-generar">
+                ✦ Generar mi charla
+            </button>
+
+        </div>
+
+        <div id="resultado" class="resultado"></div>
+
+    </div>
+
+</section>
+
+<!-- AQUÍ TERMINA EL GENERADOR -->
     </main>
 
 
@@ -434,7 +478,131 @@
         }
 
     </script>
+<script>
 
+function abrirGenerador() {
+    document.getElementById("generador").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+function generarCharla() {
+
+    const tema = document.getElementById("tema").value.trim();
+    const contexto = document.getElementById("contexto").value.trim();
+    const resultado = document.getElementById("resultado");
+
+    if (tema === "" || contexto === "") {
+        resultado.innerHTML = `
+            <div class="mensaje-error">
+                ⚠️ Completa el tema y el contexto para generar tu charla.
+            </div>
+        `;
+        return;
+    }
+
+    resultado.innerHTML = `
+
+        <div class="charla-generada">
+
+            <div class="resultado-cabecera">
+                <span>CHARLA SST • STORYTELLING</span>
+                <h2>${tema}</h2>
+                <p>Duración aproximada: 5 minutos</p>
+            </div>
+
+            <div class="bloque-charla">
+
+                <h3>01. Historia</h3>
+
+                <p>
+                    Imaginemos que iniciamos nuestra jornada.
+                    Hoy el equipo realizará la siguiente actividad:
+                    <strong>${contexto}</strong>
+                </p>
+
+                <p>
+                    Todo parece estar bajo control. Es una actividad
+                    conocida por el equipo y probablemente ya la hemos
+                    realizado muchas veces.
+                </p>
+
+                <p>
+                    Sin embargo, antes de comenzar, uno de los trabajadores
+                    identifica una condición diferente.
+                    Puede continuar porque “siempre lo hemos hecho así”
+                    o detenerse, comunicarla y verificar nuevamente
+                    los controles.
+                </p>
+
+            </div>
+
+
+            <div class="bloque-charla">
+
+                <h3>02. Reflexión</h3>
+
+                <p>
+                    Cuando trabajamos con <strong>${tema}</strong>,
+                    la experiencia es importante, pero nunca debe
+                    reemplazar la evaluación de los riesgos.
+                </p>
+
+                <p>
+                    Las condiciones pueden cambiar y una decisión
+                    tomada a tiempo puede evitar un incidente.
+                </p>
+
+            </div>
+
+
+            <div class="bloque-charla preguntas">
+
+                <h3>03. Preguntas para el equipo</h3>
+
+                <p>💬 ¿Cuál es el principal riesgo de nuestra actividad de hoy?</p>
+
+                <p>💬 ¿Qué control debemos verificar antes de comenzar?</p>
+
+                <p>💬 ¿Qué situación nos haría detener el trabajo?</p>
+
+            </div>
+
+
+            <div class="bloque-charla compromiso">
+
+                <h3>04. Compromiso del día</h3>
+
+                <p>
+                    Hoy nos comprometemos a detenernos,
+                    evaluar los riesgos y comunicar cualquier cambio
+                    antes de continuar con nuestro trabajo.
+                </p>
+
+            </div>
+
+
+            <div class="mensaje-final">
+
+                <span>MENSAJE FINAL</span>
+
+                <h3>
+                    La seguridad comienza cuando dejamos de asumir
+                    que todo estará bien y empezamos a verificarlo.
+                </h3>
+
+            </div>
+
+        </div>
+    `;
+
+    resultado.scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
 </body>
 
 </html>
