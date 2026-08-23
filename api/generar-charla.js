@@ -67,104 +67,52 @@ export default async function handler(req, res) {
         ========================================== */
 
         const prompt = `
-
 Actúa como especialista en Seguridad y Salud en el Trabajo (SST),
 prevención de riesgos y comunicación mediante storytelling.
 
-Tu objetivo es crear una charla de seguridad de aproximadamente
-5 minutos que pueda ser utilizada verbalmente antes de iniciar
-una jornada de trabajo.
+Crea una charla de seguridad de aproximadamente 5 minutos.
 
 DATOS DEL TRABAJO:
 
 Industria: ${industria}
-
 Área de trabajo: ${area}
-
 Tema de la charla: ${tema}
-
-Contexto del trabajo del día:
-${contexto}
-
-
-INSTRUCCIONES:
+Contexto del trabajo del día: ${contexto}
 
 Adapta completamente la charla a la industria,
 área, tema y contexto proporcionados.
 
-No escribas una explicación genérica de seguridad.
+Devuelve ÚNICAMENTE un JSON válido con esta estructura:
 
-Construye una historia relacionada directamente
-con la actividad descrita.
+{
+  "titulo": "Título breve y atractivo",
+  "historia": "Historia laboral breve, realista y relacionada con el contexto proporcionado.",
+  "reflexion": "Enseñanza preventiva que deja la historia.",
+  "preguntas": [
+    "Pregunta abierta 1",
+    "Pregunta abierta 2",
+    "Pregunta abierta 3"
+  ],
+  "compromiso": "Acción concreta y sencilla que el equipo aplicará hoy.",
+  "mensajeFinal": "Frase corta, humana y memorable."
+}
 
-La charla debe tener exactamente esta estructura:
+REGLAS:
 
-
-1. TÍTULO
-
-Crea un título breve, interesante y relacionado
-con el tema del día.
-
-
-2. HISTORIA
-
-Cuenta una situación laboral breve y realista.
-
-La historia debe:
-
-- sentirse cercana al trabajador;
-- estar relacionada con el contexto proporcionado;
-- presentar una decisión, condición o situación de riesgo;
-- generar curiosidad;
-- evitar dramatizaciones exageradas;
-- ser sencilla de contar verbalmente.
-
-
-3. REFLEXIÓN
-
-Relaciona la historia con el tema:
-
-${tema}
-
-Explica brevemente qué enseñanza preventiva
-deja la situación.
-
-
-4. PREGUNTAS PARA EL EQUIPO
-
-Genera exactamente 3 preguntas abiertas.
-
-Las preguntas deben ayudar a que los trabajadores
-participen y relacionen la historia con el trabajo
-que realizarán hoy.
-
-
-5. COMPROMISO DEL DÍA
-
-Propón una acción concreta y sencilla
-que el equipo pueda aplicar durante esta jornada.
-
-
-6. MENSAJE FINAL
-
-Termina con una frase corta,
-humana y fácil de recordar.
-
-
-ESTILO:
-
-- Lenguaje sencillo.
-- Profesional pero cercano.
-- Evita palabras excesivamente técnicas.
+- Usa lenguaje sencillo, profesional y cercano.
+- La historia debe relacionarse directamente con el contexto.
+- Presenta una situación o decisión que genere reflexión.
+- Genera exactamente 3 preguntas abiertas.
 - No inventes estadísticas.
 - No inventes accidentes reales.
 - No inventes normas legales.
 - No inventes procedimientos internos de la empresa.
 - No afirmes controles específicos que no hayan sido proporcionados.
-- Prioriza reflexión y participación sobre una lista de reglas.
-
+- No utilices Markdown.
+- No escribas #, ##, ** ni bloques de código.
+- Devuelve solamente el JSON.
+- No escribas ningún texto antes ni después del JSON.
 `;
-
 
 
         /* ==========================================
@@ -216,15 +164,15 @@ ESTILO:
             );
 
 
-            return res.status(500).json({
+            return res.status(respuesta.status).json({
 
                 error:
+                    datos?.error?.message ||
                     "OpenAI no pudo generar la charla."
 
             });
 
         }
-
 
 
         /* ==========================================
@@ -259,7 +207,6 @@ ESTILO:
         }
 
 
-
         /* ==========================================
            VERIFICAR RESULTADO
         ========================================== */
@@ -282,6 +229,80 @@ ESTILO:
         }
 
 
+        /* ==========================================
+           LIMPIAR RESPUESTA
+        ========================================== */
+
+        charla = charla.trim();
+
+        charla = charla
+            .replace(/^```json\s*/i, "")
+            .replace(/^```\s*/i, "")
+            .replace(/\s*```$/i, "")
+            .trim();
+
+
+        /* ==========================================
+           CONVERTIR A JSON
+        ========================================== */
+
+        let charlaEstructurada;
+
+
+        try {
+
+            charlaEstructurada =
+                JSON.parse(charla);
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "La IA no devolvió JSON válido:",
+                charla
+            );
+
+
+            return res.status(500).json({
+
+                error:
+                    "La IA generó un formato no válido."
+
+            });
+
+        }
+
+
+        /* ==========================================
+           VALIDAR ESTRUCTURA
+        ========================================== */
+
+        if (
+            !charlaEstructurada.titulo ||
+            !charlaEstructurada.historia ||
+            !charlaEstructurada.reflexion ||
+            !Array.isArray(charlaEstructurada.preguntas) ||
+            charlaEstructurada.preguntas.length < 3 ||
+            !charlaEstructurada.compromiso ||
+            !charlaEstructurada.mensajeFinal
+        ) {
+
+            console.error(
+                "JSON incompleto:",
+                charlaEstructurada
+            );
+
+
+            return res.status(500).json({
+
+                error:
+                    "La IA generó una charla incompleta."
+
+            });
+
+        }
+
 
         /* ==========================================
            ENVIAR CHARLA A TU PÁGINA
@@ -289,7 +310,27 @@ ESTILO:
 
         return res.status(200).json({
 
-            charla: charla
+            charla: {
+
+                titulo:
+                    charlaEstructurada.titulo,
+
+                historia:
+                    charlaEstructurada.historia,
+
+                reflexion:
+                    charlaEstructurada.reflexion,
+
+                preguntas:
+                    charlaEstructurada.preguntas.slice(0, 3),
+
+                compromiso:
+                    charlaEstructurada.compromiso,
+
+                mensajeFinal:
+                    charlaEstructurada.mensajeFinal
+
+            }
 
         });
 
