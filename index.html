@@ -7,880 +7,433 @@
 
     <title>SST Talks IA | Charlas de Seguridad</title>
 
-    <meta name="description"
-          content="Herramienta digital para crear charlas de Seguridad y Salud en el Trabajo mediante storytelling.">
-
-    <!-- CONEXIÓN CON TU ARCHIVO CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-<!-- ==================================================
-     HEADER
-================================================== -->
+    <!-- =========================
+         NAVEGACIÓN
+    ========================== -->
 
-<header class="header">
+    <header class="navbar">
 
-    <div class="nav-container">
+        <div class="nav-container">
 
-        <a href="#inicio" class="logo">
+            <a href="#" class="brand">
+                <div class="brand-icon">✓</div>
 
-            <div class="logo-icon">✓</div>
-
-            <div class="logo-text">
-                <strong>SST TALKS IA</strong>
-                <span>SEGURIDAD QUE CONECTA</span>
-            </div>
-
-        </a>
-
-
-        <nav class="nav-menu">
-
-            <a href="#inicio">Inicio</a>
-
-            <a href="#como-funciona">Cómo funciona</a>
-
-            <a href="#beneficios">Beneficios</a>
-
-            <a href="#generador" class="nav-button">
-                Crear charla
+                <div class="brand-text">
+                    <strong>SST TALKS IA</strong>
+                    <span>Seguridad que conecta</span>
+                </div>
             </a>
 
-        </nav>
 
-    </div>
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#beneficios">Beneficios</a>
 
-</header>
-
-
-
-<main>
-
-
-<!-- ==================================================
-     PORTADA
-================================================== -->
-
-<section class="hero" id="inicio">
-
-    <div class="hero-container">
-
-
-        <div class="hero-content">
-
-            <span class="hero-tag">
-                IA + STORYTELLING + SST
-            </span>
-
-
-            <h1>
-                Charlas de seguridad
-                <span>que conectan con las personas.</span>
-            </h1>
-
-
-            <p class="hero-description">
-                Convierte un tema de Seguridad y Salud en el Trabajo
-                en una charla breve, clara y fácil de recordar.
-            </p>
-
-
-            <p class="hero-secondary">
-                Crea historias con reflexión, preguntas para el equipo
-                y un compromiso final para iniciar la jornada.
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <button
-                    class="primary-button"
-                    onclick="abrirGenerador()">
-                    ✦ Crear mi charla
-                </button>
-
-
-                <a href="#como-funciona"
-                   class="secondary-button">
-                    Ver cómo funciona
+                <a href="#crear" class="nav-button">
+                    Crear charla
                 </a>
-
-            </div>
-
-
-            <div class="hero-note">
-                Solo necesitas un tema y el contexto del trabajo.
-            </div>
+            </nav>
 
         </div>
 
+    </header>
 
 
-        <div class="hero-visual">
 
-            <div class="visual-circle">
+    <!-- =========================
+         PORTADA PRINCIPAL
+    ========================== -->
 
-                <div class="visual-main">
-                    👷‍♀️
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <div class="tag">
+                        IA + STORYTELLING + SST
+                    </div>
+
+
+                    <h1>
+                        Charlas de seguridad
+                        <span>que conectan con las personas.</span>
+                    </h1>
+
+
+                    <p class="hero-description">
+                        Transforma un tema de Seguridad y Salud en el Trabajo
+                        en una charla de 5 minutos con historia, reflexión,
+                        preguntas y compromiso final.
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a href="#crear" class="primary-button">
+                            ✦ Crear mi charla
+                        </a>
+
+                        <a href="#como-funciona" class="secondary-button">
+                            Ver cómo funciona
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-trust">
+
+                        <div>
+                            <strong>5 min</strong>
+                            <span>Charlas breves</span>
+                        </div>
+
+                        <div>
+                            <strong>IA</strong>
+                            <span>Contenido contextual</span>
+                        </div>
+
+                        <div>
+                            <strong>SST</strong>
+                            <span>Enfoque preventivo</span>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="visual-item visual-one">
-                    💡
+
+                <!-- TARJETA VISUAL -->
+
+                <div class="hero-panel">
+
+                    <div class="panel-top">
+
+                        <span class="panel-status"></span>
+
+                        <span>
+                            Generador de charla SST
+                        </span>
+
+                    </div>
+
+
+                    <div class="panel-content">
+
+                        <span class="small-label">
+                            TEMA
+                        </span>
+
+                        <div class="fake-input">
+                            Trabajo en altura
+                        </div>
+
+
+                        <span class="small-label">
+                            CONTEXTO
+                        </span>
+
+                        <div class="fake-textarea">
+                            Instalación de malla en talud con exposición
+                            a desniveles y riesgo de caída.
+                        </div>
+
+
+                        <button class="generate-preview">
+                            ✦ Generar charla
+                        </button>
+
+
+                        <div class="result-preview">
+
+                            <span>Resultado</span>
+
+                            <strong>
+                                Una historia breve que genera reflexión.
+                            </strong>
+
+                            <p>
+                                Historia + preguntas + mensaje final
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="visual-item visual-two">
-                    💬
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BENEFICIOS
+        ========================== -->
+
+        <section class="features" id="beneficios">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <span class="section-tag">
+                        UNA NUEVA FORMA DE COMUNICAR SST
+                    </span>
+
+                    <h2>
+                        De una charla tradicional
+                        a una experiencia que se recuerda.
+                    </h2>
+
                 </div>
 
-                <div class="visual-item visual-three">
-                    🛡️
+
+                <div class="feature-grid">
+
+                    <article class="feature-card">
+
+                        <div class="feature-number">
+                            01
+                        </div>
+
+                        <h3>Historias cercanas</h3>
+
+                        <p>
+                            Convierte situaciones reales de trabajo
+                            en historias fáciles de comprender.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-number">
+                            02
+                        </div>
+
+                        <h3>IA aplicada</h3>
+
+                        <p>
+                            Organiza el contenido según el tema,
+                            actividad y contexto de trabajo.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-number">
+                            03
+                        </div>
+
+                        <h3>Participación</h3>
+
+                        <p>
+                            Incluye preguntas para generar reflexión
+                            y conversación con el equipo.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-number">
+                            04
+                        </div>
+
+                        <h3>Mensaje final</h3>
+
+                        <p>
+                            Cada charla termina con un compromiso
+                            práctico para aplicar durante la jornada.
+                        </p>
+
+                    </article>
+
                 </div>
 
             </div>
 
-        </div>
-
-
-    </div>
-
-</section>
+        </section>
 
 
 
-<!-- ==================================================
-     BENEFICIOS
-================================================== -->
+        <!-- =========================
+             CÓMO FUNCIONA
+        ========================== -->
 
-<section class="benefits" id="beneficios">
+        <section class="process" id="como-funciona">
 
-    <div class="section-container">
+            <div class="section-container">
 
+                <div class="section-heading center">
 
-        <div class="section-heading">
+                    <span class="section-tag">
+                        SIMPLE Y RÁPIDO
+                    </span>
 
-            <span class="section-tag">
-                UNA FORMA DIFERENTE DE COMUNICAR
-            </span>
+                    <h2>
+                        Tu charla en tres pasos.
+                    </h2>
 
-            <h2>
-                Seguridad que se entiende,
-                se conversa y se recuerda.
-            </h2>
-
-        </div>
-
-
-
-        <div class="benefits-grid">
-
-
-            <div class="benefit-card">
-
-                <div class="benefit-number">
-                    01
                 </div>
 
-                <h3>Más cercana</h3>
 
-                <p>
-                    Transforma un tema técnico de SST
-                    en una situación fácil de comprender.
-                </p>
+                <div class="process-grid">
 
-            </div>
+                    <div class="process-item">
+
+                        <div class="process-circle">
+                            1
+                        </div>
+
+                        <h3>Ingresa el tema</h3>
+
+                        <p>
+                            Indica el riesgo, actividad
+                            o tema que quieres trabajar.
+                        </p>
+
+                    </div>
 
 
+                    <div class="process-line"></div>
 
-            <div class="benefit-card">
 
-                <div class="benefit-number">
-                    02
+                    <div class="process-item">
+
+                        <div class="process-circle">
+                            2
+                        </div>
+
+                        <h3>Describe el contexto</h3>
+
+                        <p>
+                            Cuéntanos brevemente qué trabajo
+                            realizará tu equipo.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-line"></div>
+
+
+                    <div class="process-item">
+
+                        <div class="process-circle">
+                            3
+                        </div>
+
+                        <h3>Genera tu charla</h3>
+
+                        <p>
+                            Obtén una historia, reflexión,
+                            preguntas y mensaje final.
+                        </p>
+
+                    </div>
+
                 </div>
 
-                <h3>Más participativa</h3>
-
-                <p>
-                    Incorpora preguntas para generar
-                    conversación y reflexión con el equipo.
-                </p>
-
             </div>
 
+        </section>
 
 
-            <div class="benefit-card">
 
-                <div class="benefit-number">
-                    03
-                </div>
+        <!-- =========================
+             LLAMADA A LA ACCIÓN
+        ========================== -->
 
-                <h3>Más práctica</h3>
+        <section class="cta-section" id="crear">
 
-                <p>
-                    Obtén una estructura lista para utilizar
-                    antes de iniciar la jornada de trabajo.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==================================================
-     CÓMO FUNCIONA
-================================================== -->
-
-<section class="how-it-works" id="como-funciona">
-
-    <div class="section-container">
-
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                SIMPLE Y RÁPIDO
-            </span>
-
-            <h2>
-                Tu charla en tres pasos.
-            </h2>
-
-        </div>
-
-
-
-        <div class="steps">
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <h3>
-                    Ingresa el tema
-                </h3>
-
-                <p>
-                    Indica el riesgo, actividad
-                    o tema que quieres trabajar.
-                </p>
-
-            </div>
-
-
-
-            <div class="step-line"></div>
-
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <h3>
-                    Describe el contexto
-                </h3>
-
-                <p>
-                    Cuéntanos brevemente qué trabajo
-                    realizará tu equipo.
-                </p>
-
-            </div>
-
-
-
-            <div class="step-line"></div>
-
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <h3>
-                    Genera tu charla
-                </h3>
-
-                <p>
-                    Obtén una historia, reflexión,
-                    preguntas y mensaje final.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==================================================
-     CTA
-================================================== -->
-
-<section class="cta-section">
-
-    <div class="cta-card">
-
-
-        <div class="cta-content">
-
-            <span>
-                SST TALKS IA
-            </span>
-
-            <h2>
-                Haz que tu próxima charla
-                sea diferente.
-            </h2>
-
-            <p>
-                Convierte un tema técnico en una historia
-                que tu equipo pueda comprender,
-                comentar y recordar.
-            </p>
-
-        </div>
-
-
-
-        <button
-            class="cta-button"
-            onclick="abrirGenerador()">
-
-            ✦ Comenzar ahora
-
-        </button>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- ==================================================
-     GENERADOR
-================================================== -->
-
-<section class="generador" id="generador">
-
-    <div class="generador-contenido">
-
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-                CREA TU CHARLA
-            </span>
-
-            <h2>
-                Genera tu charla SST
-            </h2>
-
-            <p>
-                Cuéntanos qué tema quieres trabajar
-                y cuál es el contexto de la actividad.
-            </p>
-
-        </div>
-
-
-
-        <div class="formulario">
-
-
-            <div class="campo">
-
-                <label for="tema">
-                    Tema de SST
-                </label>
-
-                <input
-                    type="text"
-                    id="tema"
-                    placeholder="Ejemplo: Trabajo en altura">
-
-                <small>
-                    Puede ser un riesgo, actividad o tema preventivo.
-                </small>
-
-            </div>
-
-
-
-            <div class="campo">
-
-                <label for="contexto">
-                    Contexto del trabajo
-                </label>
-
-                <textarea
-                    id="contexto"
-                    placeholder="Ejemplo: El equipo realizará instalación de malla en un talud a 10 metros de altura."></textarea>
-
-                <small>
-                    Describe brevemente qué realizará el equipo.
-                </small>
-
-            </div>
-
-
-
-            <button
-                type="button"
-                class="boton-generar"
-                onclick="generarCharla()">
-
-                ✦ Generar mi charla
-
-            </button>
-
-
-        </div>
-
-
-
-        <!-- AQUÍ APARECERÁ EL RESULTADO -->
-
-        <div
-            id="resultado"
-            class="resultado">
-        </div>
-
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- ==================================================
-     FOOTER
-================================================== -->
-
-<footer>
-
-    <div class="footer-container">
-
-
-        <div>
-
-            <strong>
-                SST TALKS IA
-            </strong>
-
-            <p>
-                Seguridad + Tecnología + Storytelling
-            </p>
-
-        </div>
-
-
-        <div class="footer-copy">
-
-            Proyecto Digital 2026
-
-        </div>
-
-
-    </div>
-
-</footer>
-
-
-
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
-
-<script>
-
-
-/* ----------------------------------------------
-   ABRIR GENERADOR
----------------------------------------------- */
-
-function abrirGenerador() {
-
-    const generador =
-        document.getElementById("generador");
-
-    generador.scrollIntoView({
-        behavior: "smooth"
-    });
-
-
-    /* Después del desplazamiento
-       coloca el cursor en Tema */
-
-    setTimeout(function() {
-
-        document
-            .getElementById("tema")
-            .focus();
-
-    }, 700);
-
-}
-
-
-
-/* ----------------------------------------------
-   GENERAR CHARLA
----------------------------------------------- */
-
-function generarCharla() {
-
-
-    const tema =
-        document
-            .getElementById("tema")
-            .value
-            .trim();
-
-
-    const contexto =
-        document
-            .getElementById("contexto")
-            .value
-            .trim();
-
-
-    const resultado =
-        document.getElementById("resultado");
-
-
-
-    /* VALIDACIÓN */
-
-    if (tema === "" || contexto === "") {
-
-        resultado.innerHTML = `
-
-            <div class="mensaje-error">
-
-                <strong>
-                    Completa la información
-                </strong>
-
-                <p>
-                    Ingresa el tema de SST y el contexto
-                    del trabajo para generar tu charla.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-
-    /* RESULTADO */
-
-    resultado.innerHTML = `
-
-
-        <article class="charla-generada">
-
-
-            <!-- CABECERA -->
-
-
-            <div class="resultado-cabecera">
+            <div class="cta-card">
 
                 <div>
 
-                    <span>
+                    <span class="cta-label">
                         SST TALKS IA
                     </span>
 
                     <h2>
-                        ${tema}
+                        Haz que tu próxima charla
+                        sea diferente.
                     </h2>
 
                     <p>
-                        Charla de seguridad tipo storytelling
-                        · Duración aproximada: 5 minutos
+                        Convierte un tema técnico en una historia
+                        que tu equipo pueda comprender,
+                        comentar y recordar.
                     </p>
 
                 </div>
 
-            </div>
 
-
-
-            <!-- INTRODUCCIÓN -->
-
-
-            <div class="bloque-charla">
-
-                <div class="bloque-numero">
-                    01
-                </div>
-
-                <div>
-
-                    <h3>
-                        Empecemos con una historia
-                    </h3>
-
-                    <p>
-                        Imaginemos que estamos por iniciar
-                        nuestra jornada de trabajo.
-                    </p>
-
-                    <p>
-                        Hoy el equipo realizará:
-                        <strong>${contexto}</strong>
-                    </p>
-
-                    <p>
-                        Es una actividad que probablemente
-                        conocemos y hemos realizado anteriormente.
-                        Todo parece estar bajo control.
-                    </p>
-
-                    <p>
-                        Sin embargo, justo antes de comenzar,
-                        uno de los trabajadores observa una
-                        condición diferente a la habitual.
-                    </p>
-
-                    <p>
-                        En ese momento tiene dos opciones:
-                        continuar porque
-                        <em>“siempre lo hemos hecho así”</em>,
-                        o detenerse unos minutos, comunicar
-                        lo observado y volver a verificar
-                        los controles.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- REFLEXIÓN -->
-
-
-            <div class="bloque-charla">
-
-                <div class="bloque-numero">
-                    02
-                </div>
-
-                <div>
-
-                    <h3>
-                        Reflexionemos
-                    </h3>
-
-                    <p>
-                        Cuando trabajamos con
-                        <strong>${tema}</strong>,
-                        la experiencia es importante,
-                        pero no reemplaza la evaluación
-                        de los riesgos.
-                    </p>
-
-                    <p>
-                        Una actividad puede ser la misma,
-                        pero las condiciones del entorno,
-                        las personas o los equipos
-                        pueden cambiar.
-                    </p>
-
-                    <p>
-                        Detectar ese cambio antes de comenzar
-                        puede ser la diferencia entre una
-                        jornada segura y un incidente.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- PREGUNTAS -->
-
-
-            <div class="bloque-charla preguntas">
-
-                <div class="bloque-numero">
-                    03
-                </div>
-
-                <div>
-
-                    <h3>
-                        Conversemos con el equipo
-                    </h3>
-
-                    <p>
-                        💬 ¿Cuál es el principal riesgo
-                        de la actividad que realizaremos hoy?
-                    </p>
-
-                    <p>
-                        💬 ¿Qué control debemos verificar
-                        antes de comenzar?
-                    </p>
-
-                    <p>
-                        💬 ¿Qué cambio en las condiciones
-                        nos haría detener el trabajo?
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- COMPROMISO -->
-
-
-            <div class="bloque-charla compromiso">
-
-                <div class="bloque-numero">
-                    04
-                </div>
-
-                <div>
-
-                    <h3>
-                        Compromiso del día
-                    </h3>
-
-                    <p>
-                        Hoy nos comprometemos a observar
-                        antes de actuar, verificar nuestros
-                        controles y comunicar cualquier
-                        cambio que pueda afectar nuestra
-                        seguridad o la de nuestros compañeros.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- MENSAJE FINAL -->
-
-
-            <div class="mensaje-final">
-
-                <span>
-                    MENSAJE PARA RECORDAR
-                </span>
-
-                <h3>
-                    La seguridad comienza cuando dejamos
-                    de asumir que todo está bien
-                    y empezamos a verificarlo.
-                </h3>
-
-            </div>
-
-
-
-            <!-- NUEVA CHARLA -->
-
-
-            <div class="resultado-acciones">
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    onclick="nuevaCharla()">
-
-                    Crear otra charla
-
+                <button class="cta-button" onclick="iniciarCharla()">
+                    ✦ Comenzar ahora
                 </button>
 
             </div>
 
+        </section>
 
-        </article>
-
-    `;
-
-
-
-    /* BAJAR AUTOMÁTICAMENTE AL RESULTADO */
-
-    resultado.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-
-}
+    </main>
 
 
 
-/* ----------------------------------------------
-   NUEVA CHARLA
----------------------------------------------- */
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-function nuevaCharla() {
+    <footer>
 
+        <div class="footer-container">
 
-    document.getElementById("tema").value = "";
+            <div>
+                <strong>SST TALKS IA</strong>
 
-    document.getElementById("contexto").value = "";
-
-    document.getElementById("resultado").innerHTML = "";
-
-
-    document
-        .getElementById("generador")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+                <p>
+                    Seguridad y Salud en el Trabajo
+                    contada con historias que dejan huella.
+                </p>
+            </div>
 
 
-    setTimeout(function() {
+            <span>
+                © 2026 | Plataforma Digital SST
+            </span>
 
-        document
-            .getElementById("tema")
-            .focus();
+        </div>
 
-    }, 600);
-
-}
+    </footer>
 
 
-</script>
 
+    <script>
+
+        function iniciarCharla() {
+
+            alert(
+                "¡Vamos a crear tu charla SST tipo storytelling!"
+            );
+
+        }
+
+    </script>
 
 </body>
 
