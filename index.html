@@ -1,65 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SST CHARLA 2026</title>
+    <title>SST TALKS IA</title>
 
-    <!-- Conexión con el archivo de diseño -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ENCABEZADO -->
-    <header>
-        <h1>SST CHARLA 2026</h1>
-        <p>Seguridad + Tecnología + Inteligencia Artificial</p>
-    </header>
+<header class="hero-header">
+
+    <div class="barra-superior">
+        <div class="marca">
+            <div class="escudo">✓</div>
+
+            <div>
+                <h2>SST TALKS IA</h2>
+                <span>SEGURIDAD QUE INSPIRA</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#herramienta">Sobre la herramienta</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </div>
+
+    <div class="titulo-principal">
+        <h1>SST TALKS IA</h1>
+        <p>Historias que conectan. Seguridad que se recuerda.</p>
+    </div>
+
+</header>
 
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="contenedor">
+<main>
 
-        <div class="tarjeta">
+    <section class="hero-card">
 
-            <h2>¡Hola! 👋</h2>
+        <div class="hero-texto">
 
-            <p>
-                Bienvenido a mi plataforma digital.
+            <span class="etiqueta">
+                ✨ SST + IA + STORYTELLING
+            </span>
+
+            <h2>
+                Crea una charla de
+                <br>
+                SST <span>que conecte</span>
+            </h2>
+
+            <p class="descripcion">
+                Convierte un tema de seguridad en una historia breve,
+                clara y fácil de recordar.
             </p>
 
-            <p>
-                Este espacio ha sido creado para desarrollar herramientas
-                digitales aplicadas a la Seguridad y Salud en el Trabajo.
+            <p class="invitacion">
+                👥 Ven conmigo y creemos una charla tipo storytelling,
+                con una situación real, reflexión, preguntas
+                y un mensaje final para tu equipo.
             </p>
 
-            <button class="boton" onclick="mostrarMensaje()">
-                Empezar
+            <button class="boton-principal" onclick="crearCharla()">
+                ✨ Crear mi charla
             </button>
+
+            <p class="ayuda">
+                ↳ Solo dinos el tema y el contexto
+                <br>
+                y la IA hará el resto por ti.
+            </p>
 
         </div>
 
-    </main>
+
+        <div class="hero-ilustracion">
+
+            <div class="circulo">
+
+                <div class="icono idea">💡</div>
+                <div class="icono equipo">👥</div>
+
+                <div class="persona">
+                    👷‍♀️
+                </div>
+
+                <div class="laptop">
+                    💻
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-    <!-- PIE DE PÁGINA -->
-    <footer>
-        SST CHARLA 2026 | Plataforma Digital
-    </footer>
+    <section class="beneficios" id="herramienta">
+
+        <div class="beneficio">
+            <div class="beneficio-icono">📖</div>
+
+            <div>
+                <h3>Historias reales</h3>
+                <p>Ejemplos cercanos a tu trabajo.</p>
+            </div>
+        </div>
 
 
-    <!-- FUNCIONES -->
-    <script>
+        <div class="beneficio">
+            <div class="beneficio-icono">🧠</div>
 
-        function mostrarMensaje() {
-            alert("¡Bienvenido a SST CHARLA 2026!");
-        }
+            <div>
+                <h3>IA a tu servicio</h3>
+                <p>La inteligencia artificial estructura tu charla.</p>
+            </div>
+        </div>
 
-    </script>
+
+        <div class="beneficio">
+            <div class="beneficio-icono">📋</div>
+
+            <div>
+                <h3>Formato completo</h3>
+                <p>Historia, reflexión, preguntas y mensaje final.</p>
+            </div>
+        </div>
+
+
+        <div class="beneficio">
+            <div class="beneficio-icono">👥</div>
+
+            <div>
+                <h3>Impacta a tu equipo</h3>
+                <p>Charlas que inspiran y generan conciencia.</p>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer id="contacto">
+
+    ❤️ Seguridad y Salud en el Trabajo,
+    contada con historias que dejan huella.
+
+</footer>
+
+
+<script>
+
+function crearCharla() {
+    alert("¡Vamos a crear tu charla SST tipo storytelling!");
+}
+
+</script>
 
 </body>
-
 </html>
