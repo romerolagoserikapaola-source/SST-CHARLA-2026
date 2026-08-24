@@ -1,3 +1,242 @@
+/* ==========================================
+   CONFIGURACIÓN DEL LÍMITE DIARIO
+========================================== */
+
+const LIMITE_DIARIO = 5;
+
+
+/* ==========================================
+   OBTENER FECHA ACTUAL DE PERÚ
+========================================== */
+
+function obtenerFechaPeru() {
+
+    const partes = new Intl.DateTimeFormat(
+        "en-CA",
+        {
+            timeZone: "America/Lima",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        }
+    ).formatToParts(new Date());
+
+
+    const valores = {};
+
+    for (const parte of partes) {
+
+        if (parte.type !== "literal") {
+
+            valores[parte.type] = parte.value;
+
+        }
+
+    }
+
+
+    return `${valores.year}-${valores.month}-${valores.day}`;
+
+}
+
+
+/* ==========================================
+   EJECUTAR COMANDO EN REDIS
+========================================== */
+
+async function redisCommand(comando) {
+
+    if (
+        !process.env.KV_REST_API_URL ||
+        !process.env.KV_REST_API_TOKEN
+    ) {
+
+        throw new Error(
+            "Redis no está configurado en Vercel."
+        );
+
+    }
+
+
+    const respuesta = await fetch(
+        process.env.KV_REST_API_URL,
+        {
+
+            method: "POST",
+
+            headers: {
+
+                "Authorization":
+                    `Bearer ${process.env.KV_REST_API_TOKEN}`,
+
+                "Content-Type":
+                    "application/json"
+
+            },
+
+            body:
+                JSON.stringify(comando)
+
+        }
+    );
+
+
+    const datos =
+        await respuesta.json();
+
+
+    if (!respuesta.ok) {
+
+        console.error(
+            "Error Redis:",
+            respuesta.status,
+            datos
+        );
+
+
+        throw new Error(
+            "No se pudo consultar el límite diario."
+        );
+
+    }
+
+
+    return datos.result;
+
+}
+
+
+/* ==========================================
+   RESERVAR UN USO DEL DÍA
+========================================== */
+
+async function reservarUsoDiario() {
+
+    const fecha =
+        obtenerFechaPeru();
+
+
+    const clave =
+        `sst-talks:generaciones:${fecha}`;
+
+
+    const cantidad =
+        Number(
+            await redisCommand([
+                "INCR",
+                clave
+            ])
+        );
+
+
+    /*
+       La clave se elimina después de algunos días.
+       El cambio de fecha es lo que reinicia
+       realmente el límite diario.
+    */
+
+    if (cantidad === 1) {
+
+        await redisCommand([
+            "EXPIRE",
+            clave,
+            259200
+        ]);
+
+    }
+
+
+    /*
+       Si ya pasó de 5,
+       devolvemos inmediatamente ese incremento.
+    */
+
+    if (cantidad > LIMITE_DIARIO) {
+
+        await redisCommand([
+            "DECR",
+            clave
+        ]);
+
+
+        return {
+
+            permitido: false,
+
+            usados:
+                LIMITE_DIARIO,
+
+            restantes:
+                0,
+
+            clave
+
+        };
+
+    }
+
+
+    return {
+
+        permitido: true,
+
+        usados:
+            cantidad,
+
+        restantes:
+            LIMITE_DIARIO - cantidad,
+
+        clave
+
+    };
+
+}
+
+
+/* ==========================================
+   DEVOLVER USO SI LA IA FALLA
+========================================== */
+
+async function devolverUso(clave) {
+
+    try {
+
+        const actual =
+            Number(
+                await redisCommand([
+                    "GET",
+                    clave
+                ])
+            );
+
+
+        if (actual > 0) {
+
+            await redisCommand([
+                "DECR",
+                clave
+            ]);
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "No se pudo devolver el uso:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   API PRINCIPAL
+========================================== */
+
 export default async function handler(req, res) {
 
     /* ==========================================
@@ -7,10 +246,16 @@ export default async function handler(req, res) {
     if (req.method !== "POST") {
 
         return res.status(405).json({
-            error: "Método no permitido"
+
+            error:
+                "Método no permitido"
+
         });
 
     }
+
+
+    let reserva = null;
 
 
     try {
@@ -39,7 +284,10 @@ export default async function handler(req, res) {
         ) {
 
             return res.status(400).json({
-                error: "Completa todos los campos."
+
+                error:
+                    "Completa todos los campos."
+
             });
 
         }
@@ -55,8 +303,62 @@ export default async function handler(req, res) {
                 "No existe CLAVE_API_DE_OPENAI en Vercel"
             );
 
+
             return res.status(500).json({
-                error: "La conexión con la IA no está configurada."
+
+                error:
+                    "La conexión con la IA no está configurada."
+
+            });
+
+        }
+
+
+        /* ==========================================
+           VERIFICAR REDIS
+        ========================================== */
+
+        if (
+            !process.env.KV_REST_API_URL ||
+            !process.env.KV_REST_API_TOKEN
+        ) {
+
+            console.error(
+                "Redis no está conectado correctamente."
+            );
+
+
+            return res.status(500).json({
+
+                error:
+                    "El control de uso diario no está configurado."
+
+            });
+
+        }
+
+
+        /* ==========================================
+           VERIFICAR LÍMITE DIARIO
+        ========================================== */
+
+        reserva =
+            await reservarUsoDiario();
+
+
+        if (!reserva.permitido) {
+
+            return res.status(429).json({
+
+                error:
+                    "Se alcanzó el límite de 5 charlas disponibles por hoy. Inténtalo nuevamente mañana.",
+
+                limite:
+                    LIMITE_DIARIO,
+
+                restantes:
+                    0
+
             });
 
         }
@@ -138,9 +440,11 @@ REGLAS:
 
                 body: JSON.stringify({
 
-                    model: "gpt-5.6",
+                    model:
+                        "gpt-5.6",
 
-                    input: prompt
+                    input:
+                        prompt
 
                 })
 
@@ -152,10 +456,21 @@ REGLAS:
            RESPUESTA DE OPENAI
         ========================================== */
 
-        const datos = await respuesta.json();
+        const datos =
+            await respuesta.json();
 
 
         if (!respuesta.ok) {
+
+            /*
+               Como OpenAI falló,
+               devolvemos el uso reservado.
+            */
+
+            await devolverUso(
+                reserva.clave
+            );
+
 
             console.error(
                 "Error OpenAI:",
@@ -164,13 +479,15 @@ REGLAS:
             );
 
 
-            return res.status(respuesta.status).json({
+            return res
+                .status(respuesta.status)
+                .json({
 
-                error:
-                    datos?.error?.message ||
-                    "OpenAI no pudo generar la charla."
+                    error:
+                        datos?.error?.message ||
+                        "OpenAI no pudo generar la charla."
 
-            });
+                });
 
         }
 
@@ -184,19 +501,29 @@ REGLAS:
 
         if (datos.output) {
 
-            for (const item of datos.output) {
+            for (
+                const item of datos.output
+            ) {
 
-                if (!item.content) continue;
+                if (!item.content) {
+
+                    continue;
+
+                }
 
 
-                for (const contenido of item.content) {
+                for (
+                    const contenido of item.content
+                ) {
 
                     if (
-                        contenido.type === "output_text" &&
+                        contenido.type ===
+                            "output_text" &&
                         contenido.text
                     ) {
 
-                        charla += contenido.text;
+                        charla +=
+                            contenido.text;
 
                     }
 
@@ -212,6 +539,11 @@ REGLAS:
         ========================================== */
 
         if (!charla) {
+
+            await devolverUso(
+                reserva.clave
+            );
+
 
             console.error(
                 "Respuesta sin texto:",
@@ -233,12 +565,23 @@ REGLAS:
            LIMPIAR RESPUESTA
         ========================================== */
 
-        charla = charla.trim();
+        charla =
+            charla.trim();
+
 
         charla = charla
-            .replace(/^```json\s*/i, "")
-            .replace(/^```\s*/i, "")
-            .replace(/\s*```$/i, "")
+            .replace(
+                /^```json\s*/i,
+                ""
+            )
+            .replace(
+                /^```\s*/i,
+                ""
+            )
+            .replace(
+                /\s*```$/i,
+                ""
+            )
             .trim();
 
 
@@ -257,6 +600,11 @@ REGLAS:
         }
 
         catch (error) {
+
+            await devolverUso(
+                reserva.clave
+            );
+
 
             console.error(
                 "La IA no devolvió JSON válido:",
@@ -282,11 +630,18 @@ REGLAS:
             !charlaEstructurada.titulo ||
             !charlaEstructurada.historia ||
             !charlaEstructurada.reflexion ||
-            !Array.isArray(charlaEstructurada.preguntas) ||
+            !Array.isArray(
+                charlaEstructurada.preguntas
+            ) ||
             charlaEstructurada.preguntas.length < 3 ||
             !charlaEstructurada.compromiso ||
             !charlaEstructurada.mensajeFinal
         ) {
+
+            await devolverUso(
+                reserva.clave
+            );
+
 
             console.error(
                 "JSON incompleto:",
@@ -322,13 +677,30 @@ REGLAS:
                     charlaEstructurada.reflexion,
 
                 preguntas:
-                    charlaEstructurada.preguntas.slice(0, 3),
+                    charlaEstructurada.preguntas.slice(
+                        0,
+                        3
+                    ),
 
                 compromiso:
                     charlaEstructurada.compromiso,
 
                 mensajeFinal:
                     charlaEstructurada.mensajeFinal
+
+            },
+
+
+            uso: {
+
+                limite:
+                    LIMITE_DIARIO,
+
+                usados:
+                    reserva.usados,
+
+                restantes:
+                    reserva.restantes
 
             }
 
@@ -338,6 +710,24 @@ REGLAS:
     }
 
     catch (error) {
+
+        /*
+           Si ya habíamos reservado un uso
+           y ocurre un error inesperado,
+           intentamos devolverlo.
+        */
+
+        if (
+            reserva &&
+            reserva.permitido
+        ) {
+
+            await devolverUso(
+                reserva.clave
+            );
+
+        }
+
 
         console.error(
             "Error generar-charla:",
